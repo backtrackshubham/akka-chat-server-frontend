@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 COPY dist/simple-chat-server-frontend/* /usr/share/nginx/html/
 
-RUN echo 'server { \
+RUN echo "server { \
               listen       80; \
               server_name  chat.server.com; \
               location / { \
@@ -10,6 +10,6 @@ RUN echo 'server { \
                index  index.html; \
               } \
               location /api/ { \
-                proxy_pass http://backend:8080/api/; \
+                proxy_pass http://${IP:-backend}:8080/api/; \
               } \
-          }' > etc/nginx/conf.d/default.conf
+          }" > etc/nginx/conf.d/default.conf
