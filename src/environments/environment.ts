@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceUrl : 'http://192.168.0.108'
+  serviceUrl : 'http://some_ip'
 };
 
 /*

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serviceUrl: 'http://SOME_IP'
+  serviceUrl: 'http://some_ip'
 };
