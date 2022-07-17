@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      env:
+        SUPER_SECRET: ${{ secrets.DOCKER_HUB_TOKEN }}
+      run: docker login --username shuhamknoldus --password $SUPER_SECRET; docker build . --file proxy-withbuild.dockerfile --tag shuhamknoldus/akka-chat-server:frontend; docker push shuhamknoldus/akka-chat-server:frontend;
+        
